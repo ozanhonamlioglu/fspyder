@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <title>FSpyder</title>
+    <style>
+        html, body, #app {
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+<link href="bundle.css" rel="stylesheet"></head>
+<body class="ion-base">
+
+    <span id="thepage">
+
+        <div id="page-error">
+            <div class="message-container">
+                <p></p>
+            </div>
+        </div>
+        
+        <div id="app"></div>
+
+    </span>
+
+    <script>
+        // pinch to zoom off
+        const webFrame = require('electron').webFrame;
+        webFrame.setVisualZoomLevelLimits(1, 1);
+        webFrame.setLayoutZoomLevelLimits(0, 0);
+    </script>
+
+<script type="text/javascript" src="bundle.js"></script></body>
+</html>

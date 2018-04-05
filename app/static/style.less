@@ -1,0 +1,157 @@
+p, a, span, li, ul {
+    font-family: 'Roboto', sans-serif;
+    cursor: default;
+}
+
+.noselect-mixin {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome and Opera */
+}
+
+p, a, ul, li, span, label, h1, h2, h3, h4, h5, h6, div {
+    .noselect-mixin;
+}
+
+.main-search-bar-text {
+    font-family: 'Press Start 2P', cursive;
+    position: relative
+}
+
+.ion-general-main-body{
+    height: 80%;
+    background: #fff
+}
+
+.search-bar-icon-mixin{
+    background-image: url('./search.svg');
+    background-repeat: no-repeat;
+    background-position: right 20px center;
+    background-size: 30px;
+}
+
+.main-search-bar {
+    width: 70%; 
+    font-size: 18px;
+    padding: 10px;
+    margin: 10px auto;
+    .search-bar-icon-mixin;
+    background-color: #fff;
+    border-radius: 5px;
+    -webkit-box-shadow: 3px 3px 3px 0px rgba(171,171,171,1);
+    -moz-box-shadow: 3px 3px 3px 0px rgba(171,171,171,1);
+    box-shadow: 3px 3px 3px 0px rgba(171,171,171,1);
+    transition: box-shadow 200ms;
+}
+
+.main-search-bar:focus {
+    border: 1px solid #eee;
+    outline: none;
+    -webkit-box-shadow: 5px 5px 5px 0px rgba(171,171,171,1);
+    -moz-box-shadow: 5px 5px 5px 0px rgba(171,171,171,1);
+    box-shadow: 5px 5px 5px 0px rgba(171,171,171,1);
+}
+
+.spy-icon {
+    margin-left: 20px;
+    width: 70px
+}
+
+@ionFontAndTagSize: 14px;
+.ion-tag-images-size {
+    width: @ionFontAndTagSize;
+    position: relative;
+    top: 1px
+}
+.ion-tag-size {
+    font-size: @ionFontAndTagSize;
+}
+
+// notification boxes, errors, success, etc.
+#page-error{
+    position: fixed;
+    left: -200000px;
+    top: 10%;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 10px;
+    background: #FF1616;
+    z-index: 9;
+}
+
+.message-container{
+    color: #fff;
+    text-align: center
+}
+
+.settings-cube{
+    padding: 20px;
+    float: left;
+    color: #fff;
+    border-radius: 7px;
+    margin-left: 10px;
+    cursor: pointer;
+    display: none;
+}
+
+.proxy-input{
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    text-indent: 10px;
+    padding: 4px;
+    outline: 0
+}
+
+.dipnot {
+    text-align: left;
+    font-size: 8px
+}
+
+.required {
+    color: #FF1616
+}
+
+.lock_holder {
+    background: rgba(42,42,42,0.7);
+}
+
+.logger {
+    padding: 10px;
+    background: rgba(0,0,0,0.5);
+    border-radius: 6px;
+    position: absolute;
+    top: 60px;
+    right: 30px;
+    z-index: 99999;
+}
+
+.littlecircle {
+    width: 5px;
+    height: 5px;
+    border-radius: 100%;
+    background: #fff;
+    display: inline-block;
+    position: relative;
+    margin: 2px
+}
+
+.internetAlert {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 0px;
+    border-radius: 10px;
+    background: rgba(0,0,0,0);
+}
+
+.renderthispage{
+    background: #fff;
+    height: 100%;
+    overflow-y: scroll;
+}
