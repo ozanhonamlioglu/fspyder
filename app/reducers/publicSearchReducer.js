@@ -14,7 +14,6 @@ export default (state = [], action) => {
             break;
     }
 
-    console.log(state)
     return state
 
 }

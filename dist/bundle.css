@@ -1207,3 +1207,38 @@ div {
   height: 100%;
   overflow-y: scroll;
 }
+.searchHistoryPillow {
+  width: 100%;
+  height: 50vh;
+  position: relative;
+  overflow-y: scroll;
+}
+.searchHistoryPillow::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #F5F5F5;
+  border-radius: 10px;
+}
+.searchHistoryPillow::-webkit-scrollbar {
+  width: 10px;
+  background-color: #F5F5F5;
+}
+.searchHistoryPillow::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.44, #7a99d9), color-stop(0.72, #497dbd), color-stop(0.86, #1c3a94));
+}
+.searched-div {
+  width: 80%;
+  height: 100px;
+  background: #fff;
+  margin: auto;
+  -webkit-box-shadow: 1px 1px 5px 0px #8a8a8a;
+  -moz-box-shadow: 1px 1px 5px 0px #8a8a8a;
+  box-shadow: 1px 1px 5px 0px #8a8a8a;
+  border-radius: 4px;
+}
+.theHistory {
+  width: 80%;
+  height: 20px;
+  text-align: left;
+  font-size: 12px;
+}

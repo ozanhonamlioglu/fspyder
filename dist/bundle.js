@@ -48967,6 +48967,7 @@ var App = function (_Component) {
                 { style: { height: "100%" } },
                 _react2.default.createElement(_Frame2.default, {
                     search: this.props.search,
+                    allSearchActivities: this.props.searchState,
                     loader: _loader2.default,
                     pageSurf: this.props.pageHistory,
                     pageSurfState: this.props.pageState,
@@ -53530,7 +53531,8 @@ var Frame = function (_Component) {
                             pageSurfState: this.props.pageSurfState,
                             settings: this.props.settings,
                             send_proxy: this.props.send_proxy,
-                            send_cred: this.props.send_cred
+                            send_cred: this.props.send_cred,
+                            allSearchActivities: this.props.allSearchActivities
                         }),
                         _react2.default.createElement(_reactRouterWithProps.PropsRoute, {
                             path: '/browse',
@@ -57999,6 +58001,10 @@ var _react2 = _interopRequireDefault(_react);
 
 var _electron = __webpack_require__(7);
 
+var _moment = __webpack_require__(0);
+
+var _moment2 = _interopRequireDefault(_moment);
+
 var _history = __webpack_require__(26);
 
 var _back = __webpack_require__(347);
@@ -58039,7 +58045,9 @@ var Settings = function (_Component) {
                 _this.tab_merge("credentials");
             } },
         // {desc: "Set cookies", class:"ion-safe", tab: _ => { this.tab_merge("cookie") } },
-        { desc: "See search history", class: "ion-safe" }, { desc: "Try passwords!", class: "ion-info" }];
+        { desc: "See search history", class: "ion-safe", tab: function tab(_) {
+                _this.tab_merge("history");
+            } }, { desc: "Try passwords!", class: "ion-info" }];
 
         _this.tab_merge = function (name) {
 
@@ -58071,6 +58079,12 @@ var Settings = function (_Component) {
                     case "proxy":
                         _this.setState({
                             settingPage: _this.proxyTab()
+                        });
+                        break;
+
+                    case "history":
+                        _this.setState({
+                            settingPage: _this.searchHistoryTab()
                         });
                         break;
 
@@ -58400,6 +58414,50 @@ var Settings = function (_Component) {
                         '*'
                     ),
                     ' For advenced users! If you dont want to set your facebook password and username, then alternatively copy paste any active your facebook session cookies into the field. FSpyder will work accordingly.'
+                )
+            );
+        };
+
+        _this.searchHistoryTab = function (_) {
+
+            console.log(_this.props.allSearchActivities);
+
+            return _react2.default.createElement(
+                'form',
+                { onSubmit: function onSubmit(e) {
+                        return _this.handleSubmit(e);
+                    } },
+                _react2.default.createElement(
+                    'div',
+                    { className: 'searchHistoryPillow' },
+                    _this.props.allSearchActivities.map(function (data, key) {
+
+                        return _react2.default.createElement(
+                            'div',
+                            { className: 'theHistory', key: key },
+                            data.socketId ? _react2.default.createElement(
+                                'b',
+                                null,
+                                data.socketId
+                            ) : _react2.default.createElement(
+                                'b',
+                                null,
+                                'my search'
+                            ),
+                            '\xA0\xA0\xA0',
+                            _react2.default.createElement(
+                                'span',
+                                null,
+                                data.search
+                            ),
+                            '\xA0\xA0\xA0',
+                            _react2.default.createElement(
+                                'span',
+                                null,
+                                (0, _moment2.default)(data.date).format("LLLL")
+                            )
+                        );
+                    })
                 )
             );
         };
@@ -60861,7 +60919,9 @@ exports.default = (0, _redux.createStore)((0, _redux.combineReducers)({
     searchPublicState: _publicSearchReducer2.default,
     pageState: _pageHistoryReducer2.default,
     settingsState: _settingsReducer2.default
-}), {}, (0, _redux.applyMiddleware)(_reduxLogger2.default, _reduxThunk2.default, (0, _reduxPromiseMiddleware2.default)()));
+}), {}, (0, _redux.applyMiddleware)(
+//logger,
+_reduxThunk2.default, (0, _reduxPromiseMiddleware2.default)()));
 
 /***/ }),
 /* 366 */
@@ -61517,7 +61577,6 @@ exports.default = function () {
             break;
     }
 
-    console.log(state);
     return state;
 };
 

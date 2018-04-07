@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import { ipcRenderer } from 'electron'
+import moment from "moment";
 
 import { createHashHistory } from 'history';
 let history = createHashHistory();
+
 
 import back from "../../static/back.svg";
 import $ from 'jquery';
@@ -27,7 +29,7 @@ class Settings extends Component {
         {desc: "Set proxy", class:"ion-info", tab: _ => { this.tab_merge("proxy") } },
         {desc: "Set username and password", class: "ion-alert", tab: _ => { this.tab_merge("credentials") } },
         // {desc: "Set cookies", class:"ion-safe", tab: _ => { this.tab_merge("cookie") } },
-        {desc: "See search history", class: "ion-safe"},
+        {desc: "See search history", class: "ion-safe", tab: _ => { this.tab_merge("history") }},
         {desc: "Try passwords!", class: "ion-info"}
     ]
 
@@ -64,6 +66,12 @@ class Settings extends Component {
                 case "proxy":
                     this.setState({ 
                         settingPage: this.proxyTab() 
+                    })
+                    break;
+                
+                case "history":
+                    this.setState({ 
+                        settingPage: this.searchHistoryTab() 
                     })
                     break;
     
@@ -327,6 +335,43 @@ class Settings extends Component {
                     </tbody>
                 </table>
                 <p className="dipnot" style={{fontSize: "12px"}}><span className="required">*</span> For advenced users! If you dont want to set your facebook password and username, then alternatively copy paste any active your facebook session cookies into the field. FSpyder will work accordingly.</p>
+            </form>
+        )
+
+    }
+
+    searchHistoryTab = _ => {
+
+        console.log(this.props.allSearchActivities)
+
+        return (
+            <form onSubmit={e => this.handleSubmit(e)}>
+                <div className="searchHistoryPillow">
+
+
+                    {
+                        this.props.allSearchActivities.map((data, key) => {
+
+                            return <div className="theHistory" key={key}>
+                                {
+                                    data.socketId
+                                    ?
+                                    <b>{data.socketId}</b>
+                                    :
+                                    <b>my search</b>
+
+                                }
+                                &nbsp;&nbsp;&nbsp;
+                                <span>{data.search}</span>
+                                &nbsp;&nbsp;&nbsp;
+                                <span>{moment(data.date).format("LLLL")}</span>
+                            </div>
+
+                        })
+                    }
+
+
+                </div>
             </form>
         )
 

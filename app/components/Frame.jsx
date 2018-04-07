@@ -63,6 +63,7 @@ class Frame extends Component {
                             settings={this.props.settings} 
                             send_proxy={this.props.send_proxy}
                             send_cred={this.props.send_cred}
+                            allSearchActivities={this.props.allSearchActivities}
                             />
 
                             <PropsRoute

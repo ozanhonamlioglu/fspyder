@@ -344,6 +344,7 @@ class App extends Component {
                 
                 <Frame 
                 search={this.props.search}
+                allSearchActivities={this.props.searchState}
                 loader={loader} 
                 pageSurf={this.props.pageHistory} 
                 pageSurfState={this.props.pageState} 
